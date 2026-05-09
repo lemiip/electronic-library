@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Электронная библиотека</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">E-Library</div>
+
+    <nav>
+      <a href="#home">Главная</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#about">О системе</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Электронная библиотека</h1>
+      <p>Онлайн-справочная система для поиска и просмотра книг</p>
+      <button class="btn" onclick="scrollToCatalog()">Перейти в каталог</button>
+    </div>
+  </section>
+
+  <section id="catalog">
+    <h2 class="section-title">Каталог книг</h2>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Поиск книги...">
+    </div>
+
+    <div class="books">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800&auto=format&fit=crop" alt="book">
+
+        <div class="card-content">
+          <h3>1984</h3>
+          <p>Джордж Оруэлл</p>
+          <button class="btn favorite">Добавить в избранное</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800&auto=format&fit=crop" alt="book">
+
+        <div class="card-content">
+          <h3>Мастер и Маргарита</h3>
+          <p>Михаил Булгаков</p>
+          <button class="btn favorite">Добавить в избранное</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=800&auto=format&fit=crop" alt="book">
+
+        <div class="card-content">
+          <h3>Преступление и наказание</h3>
+          <p>Фёдор Достоевский</p>
+          <button class="btn favorite">Добавить в избранное</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2 class="section-title">О системе</h2>
+
+    <div class="about-content">
+      <p>
+        Данный сайт представляет собой онлайн-справочную систему для электронной библиотеки.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2 class="section-title">Контакты</h2>
+
+    <form id="contactForm">
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="email" placeholder="Ваш email" required>
+      <textarea placeholder="Введите сообщение" required></textarea>
+
+      <button class="btn">Отправить</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>2026 © Электронная библиотека</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
