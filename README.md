@@ -1,12 +1,12 @@
-Electronic Library
+# Electronic Library
 
 Онлайн-справочная система для электронной библиотеки.
 
-Описание проекта
+## Описание проекта
 
 Данный проект представляет собой многостраничный веб-сайт электронной библиотеки, разработанный с использованием HTML, CSS и JavaScript.
 
-Сайт позволяет:
+## Сайт позволяет:
 
 просматривать каталог книг;
 
@@ -19,27 +19,29 @@ Electronic Library
 
 Используемые технологии
 
-Сайт Проекта
+## Сайт Проекта
 
- https://lemiip.github.io/electronic-library/
+ -[Открыть сайт курсовой](https://lemiip.github.io/electronic-library/)
 
-Страницы проекта
-<nav>
-  <a href="index.html">Главная</a>
-  <a href="catalog.html">Каталог</a>
-   <a href="catalog.html">Избранное</a>
-  <a href="contact.html">Контакты</a>
-</nav>
+## Страницы проекта
+- [Главная страница](index.html)
+- [Каталог](catalog.html)
+- [Избранное](favorites.html)
+- [Контакты](contact.html)
+
+## Основные файлы
+
+- [Стили сайта](css/style.css)
+- [Логика сайта](js/app.js)
+
+## Материалы для сдачи
+
+-[Документ курсовой](PiriyevaLyaman-680.23kursovaya.docx)
+
+-[Презентация](Piriyeva_Lyaman-680.23kursovaya.pptx)
 
 
-Материалы для сдачи
-
-Документ курсовой ./PiriyevaLyaman-680.23 kursovaya.docx
-
-Презентация ./Piriyeva_Lyaman-680.23 kursovaya.pptx
-
-
-Что реализовано
+## Что реализовано
 
 создан многостраничный сайт электронной библиотеки
 добавлены каталог, поиск, избранное и контакты
