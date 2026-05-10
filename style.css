@@ -262,13 +262,42 @@ footer{
 
 }
 
+@media(max-width:768px){
+    .modal-content{max-width:420px;padding:12px}
+    .modal-body{flex-direction:column;gap:12px;padding:12px}
+    .modal-cover{width:100%;height:auto;max-height:420px;object-fit:cover}
+    .modal-info{padding:0}
+    .modal-title{font-size:18px}
+    .modal-close{right:8px;top:8px}
+}
+
+@media(max-width:380px){
+    .modal-content{max-width:320px;padding:8px}
+    .modal-body{padding:8px;gap:8px}
+    .modal-cover{max-height:260px}
+    .modal-title{font-size:16px}
+    .modal-desc{font-size:13px}
+    .modal-close{font-size:18px}
+}
+
 /* Modal styles */
 .modal{display:none;position:fixed;inset:0;z-index:80;align-items:center;justify-content:center;padding:24px}
 .modal[aria-hidden="false"]{display:flex}
 .modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,0.6);backdrop-filter:blur(4px)}
 .modal-content{position:relative;max-width:900px;width:100%;z-index:90;background:linear-gradient(180deg,#fff,#fbfdff);border-radius:12px;box-shadow:0 20px 50px rgba(2,6,23,0.3);overflow:hidden}
 .modal-body{display:flex;gap:20px;padding:20px}
-.modal-cover{width:220px;height:300px;object-fit:cover;border-radius:8px}
+.modal-cover{
+    flex:0 0 220px;
+    width:220px;
+    max-width:220px;
+    height:auto;
+    object-fit:cover;
+    border-radius:8px;
+    display:block;
+}
+
+/* ensure images inside modal scale down on narrow viewports */
+.modal-body img{max-width:100%;height:auto;display:block}
 .modal-info{flex:1}
 .modal-title{margin:0 0 6px;font-size:20px}
 .modal-author{margin:0;color:var(--muted)}

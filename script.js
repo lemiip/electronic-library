@@ -65,40 +65,43 @@ function showToast(msg, ms = 2000){
 // Initialize favorite buttons (also used after rendering dynamic lists)
 function initFavButtons(){
 	document.querySelectorAll('.fav').forEach(btn=>{
-		btn.removeEventListener('click', btn._favHandler);
+		// only set visual state here; actual toggling handled by delegated listener
 		const card = btn.closest('.card');
 		const title = card ? (card.dataset.title || card.querySelector('h3')?.innerText) : btn.dataset.title;
-		const author = card ? (card.dataset.author || card.querySelector('p')?.innerText || '') : '';
-		const img = card ? (card.querySelector('img')?.src || '') : '';
-		const isFav = favorites.some(f=>f.title === title);
-		setFavState(btn, isFav);
-
-		const handler = ()=>{
-			const idx = favorites.findIndex(f=>f.title === title);
-			if(idx > -1){
-				favorites.splice(idx,1);
-				setFavState(btn, false);
-			}else{
-				favorites.push({ title, author, img });
-				setFavState(btn, true);
-			}
-			// update any modal fav buttons
-			document.querySelectorAll('.modal-fav').forEach(mb=>{
-				const mt = mb.dataset.title;
-				if(mt === title) setFavState(mb, favorites.some(f=>f.title===mt));
-			});
-			saveFavorites();
-			renderFavoritesPage();
-			showToast(idx > -1 ? 'Убрано из избранного' : 'Добавлено в избранное');
-		};
-
-		btn.addEventListener('click', handler);
-		btn._favHandler = handler;
+		setFavState(btn, favorites.some(f=>f.title === title));
+		btn._favHandler = null;
 	});
 }
 
 migrateFavorites();
 initFavButtons();
+
+// Delegated handler for fav buttons (works for static and dynamically added buttons)
+document.addEventListener('click', function(e){
+	const btn = e.target.closest('.fav');
+	if(!btn) return;
+	// find card info
+	const card = btn.closest('.card');
+	const title = card ? (card.dataset.title || card.querySelector('h3')?.innerText) : btn.dataset.title;
+	const author = card ? (card.dataset.author || card.querySelector('p')?.innerText || '') : '';
+	const img = card ? (card.querySelector('img')?.src || '') : '';
+
+	const idx = favorites.findIndex(f=>f.title === title);
+	if(idx > -1){
+		favorites.splice(idx,1);
+		setFavState(btn, false);
+		// sync modal
+		document.querySelectorAll('.modal-fav').forEach(m=>{ if(m.dataset.title === title) setFavState(m, false); });
+		showToast('Убрано из избранного');
+	} else {
+		favorites.push({ title, author, img });
+		setFavState(btn, true);
+		document.querySelectorAll('.modal-fav').forEach(m=>{ if(m.dataset.title === title) setFavState(m, true); });
+		showToast('Добавлено в избранное');
+	}
+	saveFavorites();
+	renderFavoritesPage();
+});
 
 const form = document.getElementById('contactForm');
 
@@ -118,29 +121,29 @@ if(form){
 }
 
 // Nav toggle for mobile
-const navToggle = document.querySelector('.nav-toggle');
-const navEl = document.querySelector('nav');
+// Nav toggle for mobile — attach to all toggles and toggle local .nav-bar.open
+document.querySelectorAll('.nav-toggle').forEach(toggle => {
+	const bar = toggle.closest('.nav-bar');
+	if(!bar) return;
+	const nav = bar.querySelector('nav');
 
-if(navToggle){
-	navToggle.addEventListener('click',(e)=>{
+	toggle.addEventListener('click', (e) => {
 		e.stopPropagation();
-		document.body.classList.toggle('nav-open');
+		bar.classList.toggle('open');
 	});
 
-	// Close when clicking outside nav
-	document.addEventListener('click',(e)=>{
-		if(document.body.classList.contains('nav-open')){
-			if(!navEl.contains(e.target) && !navToggle.contains(e.target)){
-				document.body.classList.remove('nav-open');
-			}
+	// close when clicking outside this nav-bar
+	document.addEventListener('click', (e) => {
+		if(bar.classList.contains('open')){
+			if(!bar.contains(e.target)) bar.classList.remove('open');
 		}
 	});
 
-	// Close on resize
-	window.addEventListener('resize',()=>{
-		if(window.innerWidth>768) document.body.classList.remove('nav-open');
+	// ensure closed after resize to desktop
+	window.addEventListener('resize', ()=>{
+		if(window.innerWidth > 768) bar.classList.remove('open');
 	});
-}
+});
 
 // Modal and dynamic rendering
 const modal = document.getElementById('bookModal');
@@ -181,6 +184,10 @@ document.addEventListener('click', (e)=>{
 
 modalClose?.addEventListener('click', closeModal);
 modal?.querySelector('.modal-backdrop')?.addEventListener('click', closeModal);
+// also close when clicking on modal container (outside modal-content)
+modal?.addEventListener('click', (e) => {
+	if(e.target === modal || e.target.classList.contains('modal-backdrop')) closeModal();
+});
 
 // modal fav handler
 if(modalFav){
@@ -202,12 +209,14 @@ function renderFavoritesPage(){
 	const empty = document.getElementById('favoritesEmpty');
 	if(!container) return;
 	container.innerHTML = '';
+	// ensure favorites are objects {title,author,img}
 	if(!favorites.length){
-		empty.style.display = '';
+		if(empty) empty.style.display = '';
 		return;
 	}
-	empty.style.display = 'none';
-	favorites.forEach(f =>{
+	if(empty) empty.style.display = 'none';
+	favorites.forEach(item =>{
+		const f = (typeof item === 'string') ? { title: item, author: '', img: '' } : item || { title: '', author: '', img: '' };
 		const div = document.createElement('div');
 		div.className = 'card';
 		if(f.title) div.dataset.title = f.title;
@@ -223,5 +232,8 @@ function renderFavoritesPage(){
 	initFavButtons();
 }
 
-// If on favorites page, render on load
-if(document.getElementById('favoritesContainer')) renderFavoritesPage();
+// If on favorites page, migrate old data if needed and render on load
+if(document.getElementById('favoritesContainer')){
+	migrateFavorites();
+	renderFavoritesPage();
+}
