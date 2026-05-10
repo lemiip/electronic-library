@@ -21,7 +21,7 @@ Electronic Library
 
 Сайт Проекта
 
-Открыть сайт курсовой
+ https://lemiip.github.io/electronic-library/
 
 Страницы проекта
 <nav>
