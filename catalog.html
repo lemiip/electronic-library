@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Каталог</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +15,7 @@
 <header>
     <div class="nav-bar">
 <h1>Каталог книг</h1>
+<button class="nav-toggle" aria-label="Открыть меню">☰</button>
 
 <nav>
 <a href="index.html">Главная</a>
@@ -21,90 +25,92 @@
 </div>
 </header>
 
+
 <section class="search">
-<input type="text" id="searchInput" placeholder="Поиск книги...">
+    <input type="text" id="searchInput" placeholder="Поиск книги...">
+    <div class="search-count" id="searchCount">Показано: 0</div>
 </section>
 
 <section class="books">
 
-<div class="card">
-<img src="download.jpg">
+<div class="card" data-title="1984" data-author="Джордж Оруэлл">
+<img src="download.jpg" alt="1984 — обложка" loading="lazy">
 <h3>1984</h3>
 <p>Джордж Оруэлл</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (1).jpg">
+<div class="card" data-title="Мастер и Маргарита" data-author="Михаил Булгаков">
+<img src="download (1).jpg" alt="Мастер и Маргарита — обложка" loading="lazy">
 <h3>Мастер и Маргарита</h3>
 <p>Михаил Булгаков</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (3).jpg">
+<div class="card" data-title="Гарри Поттер" data-author="Джоан Роулинг">
+<img src="download (3).jpg" alt="Гарри Поттер — обложка" loading="lazy">
 <h3>Гарри Поттер</h3>
 <p>Джоан Роулинг</p>
 <button class="fav">В избранное</button>
 </div>
-<div class="card">
-<img src="download (4).jpg">
+<div class="card" data-title="Анна Каренина" data-author="Лев Толстой">
+<img src="download (4).jpg" alt="Анна Каренина — обложка" loading="lazy">
 <h3>Анна Каренина</h3>
 <p>Лев Толстой</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (5).jpg">
+<div class="card" data-title="Шерлок Холмс" data-author="Артур Конан Дойл">
+<img src="download (5).jpg" alt="Шерлок Холмс — обложка" loading="lazy">
 <h3>Шерлок Холмс</h3>
 <p>Артур Конан Дойл</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (6).jpg">
+<div class="card" data-title="Маленький принц" data-author="Антуан де Сент-Экзюпери">
+<img src="download (6).jpg" alt="Маленький принц — обложка" loading="lazy">
 <h3>Маленький принц</h3>
 <p>Антуан де Сент-Экзюпери</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (7).jpg">
+<div class="card" data-title="Война и мир" data-author="Лев Толстой">
+<img src="download (7).jpg" alt="Война и мир — обложка" loading="lazy">
 <h3>Война и мир</h3>
 <p>Лев Толстой</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (8).jpg">
+<div class="card" data-title="Унесённые ветром" data-author="Маргарет Митчелл">
+<img src="download (8).jpg" alt="Унесённые ветром — обложка" loading="lazy">
 <h3>Унесённые ветром</h3>
 <p>Маргарет Митчелл</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (9).jpg">
+<div class="card" data-title="Три товарища" data-author="Эрих Мария Ремарк">
+<img src="download (9).jpg" alt="Три товарища — обложка" loading="lazy">
 <h3>Три товарища</h3>
 <p>Эрих Мария Ремарк</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (10).jpg">
+<div class="card" data-title="Алхимик" data-author="Пауло Коэльо">
+<img src="download (10).jpg" alt="Алхимик — обложка" loading="lazy">
 <h3>Алхимик</h3>
 <p>Пауло Коэльо</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (11).jpg">
+<div class="card" data-title="Дюна" data-author="Фрэнк Герберт">
+<img src="download (11).jpg" alt="Дюна — обложка" loading="lazy">
 <h3>Дюна</h3>
 <p>Фрэнк Герберт</p>
 <button class="fav">В избранное</button>
 </div>
 
-<div class="card">
-<img src="download (12).jpg">
+<div class="card" data-title="Тень горы" data-author="Грегори Дэвид Робертс">
+<img src="download (12).jpg" alt="Тень горы — обложка" loading="lazy">
 <h3>Тень горы</h3>
 <p>Грегори Дэвид Робертс</p>
 <button class="fav">В избранное</button>
@@ -113,7 +119,27 @@
 
 </section>
 
+<!-- Modal for book details -->
+<div class="modal" id="bookModal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Закрыть">✕</button>
+        <div class="modal-body">
+            <img src="" alt="cover" class="modal-cover">
+            <div class="modal-info">
+                <h3 class="modal-title"></h3>
+                <p class="modal-author muted"></p>
+                <p class="modal-desc">Описание отсутствует.</p>
+                <div style="margin-top:12px;">
+                    <button class="fav modal-fav">В избранное</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="script.js"></script>
+<button id="toTop" class="to-top" aria-label="Наверх">↑</button>
 
 </body>
 </html>

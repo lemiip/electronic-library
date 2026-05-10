@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Контакты</title>
+<title>Избранное</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,7 +13,8 @@
 
 <header>
     <div class="nav-bar">
-<h1>Контакты</h1>
+<h1>Избранное</h1>
+
 <button class="nav-toggle" aria-label="Открыть меню">☰</button>
 
 <nav>
@@ -26,16 +26,21 @@
 </div>
 </header>
 
-<section class="contact">
+<div style="max-width:var(--max-width);margin:18px auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+  <h2 style="margin:0;font-weight:600">Ваши книги</h2>
+  <div>
+    <button id="clearFavorites" class="btn">Очистить</button>
+  </div>
+</div>
 
-<form id="contactForm">
-<input type="text" placeholder="Ваше имя" required>
-<input type="email" placeholder="Ваш email" required>
-<textarea placeholder="Введите сообщение"></textarea>
-<button class="btn">Отправить</button>
-</form>
-
+<section class="books" id="favoritesContainer">
+  <!-- Favorite cards rendered by script.js -->
 </section>
+
+<div class="empty-state" id="favoritesEmpty" style="display:none; text-align:center; padding:60px;">
+  <p>У вас пока нет сохранённых книг.</p>
+  <p><a href="catalog.html">Перейти в каталог</a></p>
+</div>
 
 <script src="script.js"></script>
 <button id="toTop" class="to-top" aria-label="Наверх">↑</button>
