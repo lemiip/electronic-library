@@ -36,9 +36,9 @@
 
 ## Материалы для сдачи
 
--[Документ курсовой](PiriyevaLyaman-680.23 kursovaya.docx)
+-[Документ курсовой](PiriyevaLyaman-680.23kursovaya.docx)
 
--[Презентация](Piriyeva_Lyaman-680.23 kursovaya.pptx)
+-[Презентация](Piriyeva_Lyaman-680.23kursovaya.pptx)
 
 
 ## Что реализовано
