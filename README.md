@@ -34,9 +34,9 @@ Electronic Library
 
 Материалы для сдачи
 
-Документ курсовой
+Документ курсовой ./PiriyevaLyaman-680.23 kursovaya.docx
 
-Презентация
+Презентация ./Piriyeva_Lyaman-680.23 kursovaya.pptx
 
 
 Что реализовано
