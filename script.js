@@ -237,3 +237,15 @@ if(document.getElementById('favoritesContainer')){
 	migrateFavorites();
 	renderFavoritesPage();
 }
+
+// Clear favorites button (on favorites page)
+const clearFavBtn = document.getElementById('clearFavorites');
+if(clearFavBtn){
+	clearFavBtn.addEventListener('click', ()=>{
+		if(!confirm('Очистить все избранные?')) return;
+		favorites = [];
+		saveFavorites();
+		renderFavoritesPage();
+		showToast('Избранное очищено');
+	});
+}
